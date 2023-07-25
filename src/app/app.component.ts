@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +8,17 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'sb_translate';
-  goToNextPage() {
-    console.log('Navigating to the next page.');
+  constructor(private router: Router) {}
+
+  toggleTranslation() {
+    const currentRoute = this.router.url;
+
+    if (currentRoute === '/text-translate') {
+      this.router.navigate(['/speech-translate']);
+    } else {
+      this.router.navigate(['/text-translate']);
+    }
   }
-}
   
+  }
+
