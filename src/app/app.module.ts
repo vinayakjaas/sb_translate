@@ -8,6 +8,8 @@ import { RouterModule, Routes } from '@angular/router';
 import { SpeechtranslateModule } from 'projects/speechtranslate/src/public-api';
 import { SpeechTranslationComponent } from './speech-translation/speech-translation.component';
 import { TextTranslationComponent } from './text-translation/text-translation.component';
+import { TextandspeechModule } from 'projects/textandspeech/src/public-api';
+import { TextSpeechComponent } from './text-speech/text-speech.component';
 
 
 
@@ -15,13 +17,15 @@ import { TextTranslationComponent } from './text-translation/text-translation.co
   declarations: [
     AppComponent,
     SpeechTranslationComponent,
-    TextTranslationComponent
+    TextTranslationComponent,
+    TextSpeechComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     TexttranslateModule,
-    SpeechtranslateModule
+    SpeechtranslateModule,
+    TextandspeechModule
   ],
   providers: [],
   bootstrap: [AppComponent]

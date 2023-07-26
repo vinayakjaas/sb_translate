@@ -15,8 +15,15 @@ export class AppComponent {
 
     if (currentRoute === '/text-translate') {
       this.router.navigate(['/speech-translate']);
-    } else {
+    } else if (currentRoute === '/text-translate') {
       this.router.navigate(['/text-translate']);
+      
+    } else if (currentRoute === '/text-speech') {
+      this.router.navigate(['/text-translate']);
+      
+    } 
+    else{
+      this.router.navigate(['/text-speech']);
     }
   }
   

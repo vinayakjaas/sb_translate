@@ -1,10 +1,9 @@
 .header {
     background-color: black;
-    color: #fff;
+    color: yellow;
     text-align: center;
     padding: 20px;
     font-size: 24px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    background-image: linear-gradient(to right, #553c9a 45%, #ee4b2b);
   }

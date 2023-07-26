@@ -1,0 +1,65 @@
+/* Set the width and height to make the div larger */
+
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+
+.container {
+    width: 400px;
+    background: linear-gradient(to bottom right, #f9f9f9, #e6e6e6);
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+}
+label {
+    font-weight: bold;
+    color: #444;
+    margin-bottom: 5px;
+}
+.text-input {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: black;
+    padding: 8px;
+    min-height: 100px;
+    overflow-y: auto;
+    background-color: #f9f9f9;
+}
+select {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 8px;
+    width: 100%;
+    background-color: #f9f9f9;
+}
+button {
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+button:hover {
+    background-color: #0056b3;
+}
+p {
+    color: #666;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+p.translated {
+    color: #333;
+    font-weight: bold;
+}
+  
