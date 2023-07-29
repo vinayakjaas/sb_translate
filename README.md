@@ -9,7 +9,7 @@ Bhashini follows [ISO-639 series](https://www.loc.gov/standards/iso639-2/php/cod
 2. open the project and in the terminal run
 
 3. Change in  file to .env and add userId, ulcaApiKey, AuthorizationToken
-```export const environment = {
+```export const environment = 
   production: false,
   apiKey: 'YOUR_API_KEY',
   userId: 'YOUR_USER_ID',
