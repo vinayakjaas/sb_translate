@@ -36,7 +36,7 @@ npm install  @angular/common @angular/core @angular/http @angular/platform-brows
 ## About Text To Speech Translate Library
 Text-to-speech translation is a technology that enables the conversion of written text from one language into spoken words in another language.
 
-## About Text To Speech Translate Library
+## About Text To Text And Text To Speech Translate Library
 Written text is converted from one language to another without any audio output.Written text is translated into another language and then converted into speech, allowing users to hear the content in a language they may not understand in its written form.
 
 
