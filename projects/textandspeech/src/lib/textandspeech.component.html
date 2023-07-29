@@ -1,0 +1,22 @@
+<div class="container">
+    <div>
+        <label for="textElement">Text:</label>
+        <div contenteditable="true" id="textElement" class="text-input"></div>
+    </div>
+    <div>
+        <label for="targetLanguage">Target Language:</label>
+        <select id="targetLanguage" [(ngModel)]="selectedTargetLanguage">
+            <option *ngFor="let lang of language.targetLanguageList" [value]="lang">
+                {{ getLanguageName(lang) }}
+            </option>
+        </select>
+    </div>
+    <div>
+        <button (click)="translateText()">Translate</button>
+        <button (click)="speakTranslation()">Speak Translation</button>
+    </div>
+    <div>
+        <p>Translated Output:</p>
+        <p>{{ translatedOutput }}</p>
+    </div>
+</div>
