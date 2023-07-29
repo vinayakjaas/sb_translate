@@ -5,9 +5,11 @@ import {SpeechTranslationComponent} from './speech-translation/speech-translatio
 const routes: Routes = [
   { path: 'text-translate', component: TextTranslationComponent }, // Route for TextTranslateComponent
   { path: 'speech-translate', component: SpeechTranslationComponent}, // Route for SpeechTranslateComponent
+  
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
+
 export class AppRoutingModule { }

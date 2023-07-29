@@ -11,6 +11,7 @@ import { TextTranslationComponent } from './text-translation/text-translation.co
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,4 +27,5 @@ import { TextTranslationComponent } from './text-translation/text-translation.co
   providers: [],
   bootstrap: [AppComponent]
 })
+
 export class AppModule { }

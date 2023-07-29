@@ -1,7 +1,7 @@
 
-import { Component, ElementRef } from '@angular/core';
+import { Component, ContentChild, ElementRef, AfterContentInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-
+import { environment } from './environment'; 
 interface TtsApiResponse {
   pipelineResponse?: {
     audio?: {
@@ -28,7 +28,9 @@ interface Language {
   templateUrl: './speechtranslate.component.html',
   styleUrls: ['./speechtranslate.component.css'],
 })
-export class SpeechtranslateComponent {
+export class SpeechtranslateComponent implements AfterContentInit {
+  @ContentChild('contentElement') contentElementRef?: ElementRef;
+
   language: Language = {
     sourceLanguage: 'en',
     targetLanguageList: [
@@ -64,14 +66,15 @@ export class SpeechtranslateComponent {
   ttsOutput: string | undefined;
 
   constructor(private http: HttpClient, private elementRef: ElementRef) {}
+
+  ngAfterContentInit() {
+    this.translateAndSpeak();
+  }
+
   onTextSelection(event: MouseEvent) {
     const selectedText = window.getSelection()?.toString().trim();
-    if (selectedText) {
-      this.selectedText = selectedText;
-    } else {
-      this.selectedText = '';
-      this.translatedOutput = ''; // Reset translated output when no text is selected
-    }
+    this.selectedText = selectedText || ''; // Set selectedText to the actual selected text or an empty string
+    this.selectedTargetLanguage = 'sl'; // Reset the selected target language to 'sl' (Select Language) when new text is selected
   }
 
   translateAndSpeak() {
@@ -80,16 +83,12 @@ export class SpeechtranslateComponent {
     }
 
     const url = 'https://dhruva-api.bhashini.gov.in/services/inference/pipeline';
-    const userId = '26f83e9d425a40a28ec59f944cb4da6c';
-    const apiKey = '1829da2d40-6a44-4d3d-ac61-9850afd41175';
-    const authorizationToken =
-      'cYZieH0OCn8PUZbylALnCkwvs8PYvAiYwiQ7FUj1V7_Vspia5jvxFs0T3R3-DXF_';
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      userID: userId,
-      ulcaApiKey: apiKey,
-      Authorization: authorizationToken,
+      userID: environment.userId,
+      ulcaApiKey: environment.apiKey,
+      Authorization: environment.authorizationToken,
     });
 
     const translationPayload = {
@@ -140,18 +139,14 @@ export class SpeechtranslateComponent {
     if (!this.translatedOutput) {
       return;
     }
-
     const url = 'https://dhruva-api.bhashini.gov.in/services/inference/pipeline';
-    const userId = '26f83e9d425a40a28ec59f944cb4da6c';
-    const apiKey = '1829da2d40-6a44-4d3d-ac61-9850afd41175';
-    const authorizationToken =
-      'cYZieH0OCn8PUZbylALnCkwvs8PYvAiYwiQ7FUj1V7_Vspia5jvxFs0T3R3-DXF_';
+    
 
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
-      userID: userId,
-      ulcaApiKey: apiKey,
-      Authorization: authorizationToken,
+      userID: environment.userId,
+      ulcaApiKey: environment.apiKey,
+      Authorization: environment.authorizationToken,
     });
 
     const ttsServiceIds: { [key: string]: string } = {
@@ -238,7 +233,6 @@ export class SpeechtranslateComponent {
         return 'Select Language';
       case 'as':
         return 'Assamese';
-      // ... Add other language cases ...
       case 'bn':
         return 'Bengali';
       case 'brx':
@@ -286,3 +280,5 @@ export class SpeechtranslateComponent {
     }
   }
 }
+
+
