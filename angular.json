@@ -93,6 +93,39 @@
           }
         }
       }
+    },
+    "speechtranslate": {
+      "projectType": "library",
+      "root": "projects/speechtranslate",
+      "sourceRoot": "projects/speechtranslate/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/speechtranslate/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/speechtranslate/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/speechtranslate/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/speechtranslate/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   }
 }

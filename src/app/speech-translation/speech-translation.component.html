@@ -1,0 +1,17 @@
+<div class="header">
+    Text To Speech Translation
+</div>
+<lib-speechtranslate>
+    <h1 id="title">A. P. J. Abdul Kalam</h1>
+<div id="tribute-data">
+  <h1 class="title-APJ">About the Legend</h1>
+  <p>
+    <ng-container *ngIf="aboutTheLegend">
+      <ul>
+        <li *ngFor="let item of aboutTheLegend">{{ item }}</li>
+      </ul>
+    </ng-container>
+  </p>
+</div>
+</lib-speechtranslate>
+  

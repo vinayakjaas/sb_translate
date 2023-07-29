@@ -8,13 +8,10 @@ interface ApiResponse {
     }[];
   }[];
 }
-
 interface Language {
   sourceLanguage: string;
   targetLanguageList: string[];
 }
-
-
 @Component({
   selector: 'lib-texttranslate',
   templateUrl:'texttranslate.component.html' ,

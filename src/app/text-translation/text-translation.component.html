@@ -1,0 +1,14 @@
+<div class="header">
+    Text To Text Translation
+</div>
+<lib-texttranslate>
+    <div #contentElement>
+        <!-- Content will be loaded here -->
+      </div>
+      <div>
+        <ng-container *ngIf="content">
+          <p>{{ content }}</p>
+        </ng-container>
+      </div>
+
+</lib-texttranslate>
