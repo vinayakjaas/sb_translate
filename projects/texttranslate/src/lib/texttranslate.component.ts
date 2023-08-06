@@ -54,9 +54,7 @@ interface Language {
   /* Style for the button when clicked */
   .translate-button:active {
       background-color: #003e80;
-  }
-  
-  
+  } 
   `
   ]
 })
@@ -66,31 +64,7 @@ export class TexttranslateComponent  implements AfterContentInit{
 
   language: Language = {
     sourceLanguage: 'en',
-    targetLanguageList: [
-      'sl',
-      'as',
-      'bn',
-      'brx',
-      'doi',
-      'gom',
-      'gu',
-      'hi',
-      'kn',
-      'ks',
-      'mai',
-      'ml',
-      'mni',
-      'mr',
-      'ne',
-      'or',
-      'pa',
-      'sa',
-      'sat',
-      'sd',
-      'ta',
-      'te',
-      'ur',
-    ],
+    targetLanguageList: ['sl','as','bn','brx','doi','gom','gu','hi','kn','ks','mai','ml','mni','mr','ne','or','pa','sa','sat','sd','ta','te','ur'],
   };
   selectedTargetLanguage: string = 'sl';
   translatedOutput: string | undefined;

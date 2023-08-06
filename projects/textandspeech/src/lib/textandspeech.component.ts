@@ -21,6 +21,15 @@ interface Language {
   sourceLanguage: string;
   targetLanguageList: string[];
 }
+function createHttpHeaders(env: any): HttpHeaders {
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    userID: env.userId,
+    ulcaApiKey: env.apiKey,
+    Authorization: env.authorizationToken,
+  });
+  return headers;
+}
 
 @Component({
   selector: 'lib-textandspeech',
@@ -30,31 +39,7 @@ interface Language {
 export class TextandspeechComponent {
   language: Language = {
     sourceLanguage: 'en',
-    targetLanguageList: [
-      'sl',
-      'as',
-      'bn',
-      'brx',
-      'doi',
-      'gom',
-      'gu',
-      'hi',
-      'kn',
-      'ks',
-      'mai',
-      'ml',
-      'mni',
-      'mr',
-      'ne',
-      'or',
-      'pa',
-      'sa',
-      'sat',
-      'sd',
-      'ta',
-      'te',
-      'ur',
-    ],
+    targetLanguageList: ['sl','as','bn','brx','doi','gom','gu','hi','kn','ks','mai','ml','mni','mr','ne','or','pa','sa','sat','sd','ta','te','ur'],
   };
   selectedTargetLanguage: string = 'sl';
   translatedOutput: string | undefined;
@@ -67,14 +52,7 @@ export class TextandspeechComponent {
     const text = this.elementRef.nativeElement.querySelector('#textElement').innerText.trim();
     
     const url = 'https://dhruva-api.bhashini.gov.in/services/inference/pipeline';
-    
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      userID: environment.userId,
-      ulcaApiKey: environment.apiKey,
-      Authorization: environment.authorizationToken,
-    });
+    const headers = createHttpHeaders(environment);
 
     const translationPayload = {
       pipelineTasks: [
@@ -128,14 +106,7 @@ export class TextandspeechComponent {
     }
     
     const url = 'https://dhruva-api.bhashini.gov.in/services/inference/pipeline';
-    
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      userID: environment.userId,
-      ulcaApiKey: environment.apiKey,
-      Authorization: environment.authorizationToken,
-    });
+    const headers = createHttpHeaders(environment);
 
     const ttsServiceIds: { [key: string]: string } = {
       as: 'ai4bharat/indic-tts-coqui-indo_aryan-gpu--t4',

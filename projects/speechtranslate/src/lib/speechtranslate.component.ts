@@ -1,7 +1,7 @@
-
 import { Component, ContentChild, ElementRef, AfterContentInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from './environment'; 
+
 interface TtsApiResponse {
   pipelineResponse?: {
     audio?: {
@@ -23,6 +23,16 @@ interface Language {
   targetLanguageList: string[];
 }
 
+function createHttpHeaders(env: any): HttpHeaders {
+  const headers = new HttpHeaders({
+    'Content-Type': 'application/json',
+    userID: env.userId,
+    ulcaApiKey: env.apiKey,
+    Authorization: env.authorizationToken,
+  });
+  return headers;
+}
+
 @Component({
   selector: 'lib-speechtranslate',
   templateUrl: './speechtranslate.component.html',
@@ -33,31 +43,7 @@ export class SpeechtranslateComponent implements AfterContentInit {
 
   language: Language = {
     sourceLanguage: 'en',
-    targetLanguageList: [
-      'sl',
-      'as',
-      'bn',
-      'brx',
-      'doi',
-      'gom',
-      'gu',
-      'hi',
-      'kn',
-      'ks',
-      'mai',
-      'ml',
-      'mni',
-      'mr',
-      'ne',
-      'or',
-      'pa',
-      'sa',
-      'sat',
-      'sd',
-      'ta',
-      'te',
-      'ur',
-    ],
+    targetLanguageList: ['sl','as','bn','brx','doi','gom','gu','hi','kn','ks','mai','ml','mni','mr','ne','or','pa','sa','sat','sd','ta','te','ur'],
   };
   selectedTargetLanguage: string = 'sl';
   selectedText: string = '';
@@ -83,13 +69,7 @@ export class SpeechtranslateComponent implements AfterContentInit {
     }
 
     const url = 'https://dhruva-api.bhashini.gov.in/services/inference/pipeline';
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      userID: environment.userId,
-      ulcaApiKey: environment.apiKey,
-      Authorization: environment.authorizationToken,
-    });
+    const headers = createHttpHeaders(environment);
 
     const translationPayload = {
       pipelineTasks: [
@@ -140,14 +120,7 @@ export class SpeechtranslateComponent implements AfterContentInit {
       return;
     }
     const url = 'https://dhruva-api.bhashini.gov.in/services/inference/pipeline';
-    
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      userID: environment.userId,
-      ulcaApiKey: environment.apiKey,
-      Authorization: environment.authorizationToken,
-    });
+    const headers = createHttpHeaders(environment);
 
     const ttsServiceIds: { [key: string]: string } = {
       as: 'ai4bharat/indic-tts-coqui-indo_aryan-gpu--t4',
@@ -280,5 +253,3 @@ export class SpeechtranslateComponent implements AfterContentInit {
     }
   }
 }
-
-
