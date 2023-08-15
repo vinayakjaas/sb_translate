@@ -44,13 +44,13 @@ export class SpeechtranslateComponent implements AfterContentInit {
 
   constructor(
     private http: HttpClient,
-    @Optional() @Inject('TEXT_TRANSLATE_CONFIG') private config: SpeechTranslateConfig // Inject the configuration
+    @Optional() @Inject('SPEECH_TRANSLATE_CONFIG') private config: SpeechTranslateConfig // Inject the configuration
   ) {}
   
 
   ngAfterContentInit() {
     this.translateAndSpeak();
-  }
+  } 
 
   onTextSelection(event: MouseEvent) {
     const selectedText = window.getSelection()?.toString().trim();

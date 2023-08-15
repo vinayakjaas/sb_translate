@@ -1,5 +1,5 @@
 {
-  "name": "textandspeech",
+  "name": "bashaini-textandspeechtranslation",
   "version": "0.0.1",
   "peerDependencies": {
     "@angular/common": "^16.1.0",
@@ -8,5 +8,24 @@
   "dependencies": {
     "tslib": "^2.3.0"
   },
+  "keywords": [
+    "language",
+    "translation",
+    "Indian languages",
+    "API",
+    "Bhashini"
+  ],
+  "author": {
+    "name": "Vinayak Raj Ranjan",
+    "email": "vinayakrajqaz@gmail.com",
+    "url": "https://c4gt-milestones.vercel.app/docs/2023/Karmayogi/Integrate%20the%20Content%20translation%20UI%20into%20iGOT%20Karamayogi"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vinayakjaas/sb_translate/tree/library/projects/textandspeech",
+    "directory": "packages/react"
+  },
+  "homepage": "https://github.com/vinayakjaas/sb_translate/tree/library",
+
   "sideEffects": false
 }

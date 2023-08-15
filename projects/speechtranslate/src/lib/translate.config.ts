@@ -3,4 +3,3 @@ export interface SpeechTranslateConfig {
     apiKey: string;
     authorizationToken: string;
   }
-  

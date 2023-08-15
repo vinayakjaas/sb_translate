@@ -1,8 +1,9 @@
-import { NgModule } from '@angular/core';
+import { NgModule ,  CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { TextandspeechComponent } from './textandspeech.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+
 
 
 @NgModule({
@@ -14,6 +15,7 @@ import { CommonModule } from '@angular/common';
     CommonModule],
   exports: [
     TextandspeechComponent
-  ]
+  ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
 })
 export class TextandspeechModule { }

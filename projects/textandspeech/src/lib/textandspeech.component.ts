@@ -32,7 +32,7 @@ function createHttpHeaders(env: any): HttpHeaders {
 }
 
 @Component({
-  selector: 'lib-textandspeech',
+  selector: 'c',
   templateUrl: 'textandspeech.component.html',
   styleUrls: ['textandspeech.component.css']
 })
