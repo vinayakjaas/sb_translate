@@ -40,6 +40,10 @@ yarn-error.log
 testem.log
 /typings
 
+# Angular CLI configuration
+.angular-cli.json
+angular.json
+
 # System files
 .DS_Store
 Thumbs.db

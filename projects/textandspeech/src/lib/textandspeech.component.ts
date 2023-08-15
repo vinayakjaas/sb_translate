@@ -1,6 +1,6 @@
-import { Component, ElementRef } from '@angular/core';
+import { Component,ContentChild, ElementRef,Optional,Inject } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { environment } from './environment';
+import { TextandspeechConfig } from './textandspeech.config';
 interface TtsApiResponse {
   pipelineResponse?: {
     audio?: {
@@ -37,6 +37,7 @@ function createHttpHeaders(env: any): HttpHeaders {
   styleUrls: ['textandspeech.component.css']
 })
 export class TextandspeechComponent {
+  @ContentChild('contentElement') contentElementRef?: ElementRef;
   language: Language = {
     sourceLanguage: 'en',
     targetLanguageList: ['sl','as','bn','brx','doi','gom','gu','hi','kn','ks','mai','ml','mni','mr','ne','or','pa','sa','sat','sd','ta','te','ur'],
@@ -46,13 +47,20 @@ export class TextandspeechComponent {
   audioElement: HTMLAudioElement = new Audio();
   ttsOutput: string | undefined;
 
-  constructor(private http: HttpClient, private elementRef: ElementRef) {}
+  constructor(private http: HttpClient, private elementRef: ElementRef,@Optional() @Inject('TEXT_AND_SPEECH_CONFIG') private config: TextandspeechConfig // Inject the configuration
+  ) {}
+
 
   translateText() {
     const text = this.elementRef.nativeElement.querySelector('#textElement').innerText.trim();
     
     const url = 'https://dhruva-api.bhashini.gov.in/services/inference/pipeline';
-    const headers = createHttpHeaders(environment);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      userID: this.config?.userId || '', // Use the injected user ID
+      ulcaApiKey: this.config?.apiKey || '', // Use the injected API key
+      Authorization: this.config?.authorizationToken || '', // Use the injected authorization token
+    });
 
     const translationPayload = {
       pipelineTasks: [
@@ -106,7 +114,12 @@ export class TextandspeechComponent {
     }
     
     const url = 'https://dhruva-api.bhashini.gov.in/services/inference/pipeline';
-    const headers = createHttpHeaders(environment);
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      userID: this.config?.userId || '', // Use the injected user ID
+      ulcaApiKey: this.config?.apiKey || '', // Use the injected API key
+      Authorization: this.config?.authorizationToken || '', // Use the injected authorization token
+    });
 
     const ttsServiceIds: { [key: string]: string } = {
       as: 'ai4bharat/indic-tts-coqui-indo_aryan-gpu--t4',

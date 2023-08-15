@@ -21,6 +21,9 @@
       "speechtranslate": [
         "dist/speechtranslate"
       ],
+      "text-translation": [
+        "dist/text-translation"
+      ],
       "textandspeech": [
         "dist/textandspeech"
       ]

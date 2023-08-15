@@ -1,0 +1,18 @@
+<div class="translation-container">
+    <div class="language-select-container">
+      <select [(ngModel)]="selectedTargetLanguage" class="language-select">
+        <option *ngFor="let language of language.targetLanguageList" [value]="language">{{
+          getLanguageDisplayName(language) }}</option>
+      </select>
+    </div>
+    <button (click)="translateContent()" class="translate-button">Translate</button>
+  </div>
+  <ng-container *ngIf="showContentElement">
+    <ng-content #contentElement></ng-content>
+  </ng-container>
+  
+  <ng-container *ngIf="showTranslation">
+    <div>
+      <p>{{ translatedOutput }}</p>
+    </div>
+  </ng-container>
