@@ -1,14 +1,12 @@
 
-<div>
-    <div>
+  <div>
+    <div *ngIf="selectedText">
       <label for="targetLanguage">Target Language:</label>
       <select id="targetLanguage" [(ngModel)]="selectedTargetLanguage">
         <option *ngFor="let lang of language.targetLanguageList" [value]="lang">
           {{ getLanguageName(lang) }}
         </option>
       </select>
-    </div>
-    <div>
       <button class="translate-btn" (click)="translateAndSpeak()">Translate & Speak</button>
     </div>
     <div>
@@ -18,7 +16,9 @@
       </div>
     </div>
     <div *ngIf="translatedOutput">
-
+      <!-- Display the translated output if available -->
+      Translated Output: {{ translatedOutput }}
     </div>
   </div>
+  
   

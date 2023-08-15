@@ -1,3 +1,4 @@
+/* Style for the Translate button */
 .translate-button {
     background-color: white;
     color: black;
@@ -6,10 +7,14 @@
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.3s ease-in-out;
+    margin-top: 10px; /* Add margin at the top */
 }
+
 .translate-button:hover {
     background-color: #0056b3;
 }
+
+/* Style for the target language dropdown */
 #targetLanguage {
     appearance: none;
     padding: 10px;
@@ -24,6 +29,8 @@
     outline: none;
     box-shadow: 0 0 4px #ff0073;
 }
+
+/* Style for selected and translated text headings */
 .selected-text-heading,
 .translated-heading {
     font-weight: bold;
@@ -31,15 +38,18 @@
     background-color: blue;
 }
 
+/* Style for selected and translated text content */
 .selected-text,
 .translated-text {
     white-space: pre-line;
 }
 
+/* Style for the Translate & Speak button */
 .translate-btn {
     background-color: #007bff;
     border: 1px solid #ccc;
     border-radius: 4px;
-    padding: 5px;
+    padding: 10px;
+    margin-top: 10px; /* Add margin at the top */
+    margin-left: 5px;
 }
-
