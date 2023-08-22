@@ -16,6 +16,5 @@ import { CommonModule } from '@angular/common';
   exports: [
     TextandspeechComponent
   ],
-  schemas: [CUSTOM_ELEMENTS_SCHEMA], // Add this line
 })
 export class TextandspeechModule { }

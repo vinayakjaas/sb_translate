@@ -23,7 +23,6 @@ interface Language {
   targetLanguageList: string[];
 }
 
-
 @Component({
   selector: 'lib-speechtranslate',
   templateUrl: './speechtranslate.component.html',
@@ -42,13 +41,22 @@ export class SpeechtranslateComponent implements AfterContentInit {
   audioElement: HTMLAudioElement = new Audio();
   ttsOutput: string | undefined;
 
+
   constructor(
     private http: HttpClient,
-    @Optional() @Inject('SPEECH_TRANSLATE_CONFIG') private config: SpeechTranslateConfig // Inject the configuration
+    @Optional() @Inject('SPEECH_TRANSLATE_CONFIG') private config: SpeechTranslateConfig
   ) {}
-  
 
-  ngAfterContentInit() {
+  private createHttpHeaders(): HttpHeaders {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      userID: this.config?.userId || '',
+      ulcaApiKey: this.config?.apiKey || '',
+      Authorization: this.config?.authorizationToken || '',
+    });
+  }
+
+    ngAfterContentInit() {
     this.translateAndSpeak();
   } 
 
@@ -64,13 +72,9 @@ export class SpeechtranslateComponent implements AfterContentInit {
     }
 
     const url = 'https://dhruva-api.bhashini.gov.in/services/inference/pipeline';
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      userID: this.config?.userId || '', // Use the injected user ID
-      ulcaApiKey: this.config?.apiKey || '', // Use the injected API key
-      Authorization: this.config?.authorizationToken || '', // Use the injected authorization token
-    });
+    const headers = this.createHttpHeaders();
 
+   
     const translationPayload = {
       pipelineTasks: [
         {
@@ -119,13 +123,9 @@ export class SpeechtranslateComponent implements AfterContentInit {
     if (!this.translatedOutput) {
       return;
     }
+
     const url = 'https://dhruva-api.bhashini.gov.in/services/inference/pipeline';
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      userID: this.config?.userId || '', // Use the injected user ID
-      ulcaApiKey: this.config?.apiKey || '', // Use the injected API key
-      Authorization: this.config?.authorizationToken || '', // Use the injected authorization token
-    });
+    const headers = this.createHttpHeaders();
 
     const ttsServiceIds: { [key: string]: string } = {
       as: 'ai4bharat/indic-tts-coqui-indo_aryan-gpu--t4',
