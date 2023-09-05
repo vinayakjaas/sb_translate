@@ -5,6 +5,8 @@ Bhashini follows [ISO-639 series](https://www.loc.gov/standards/iso639-2/php/cod
 # TextTranslation
 Users interact with the Text-to-Text Translation tool through a user interface, which can be a web-based application, a desktop program, or a mobile app. The interface typically includes text input fields where users can type or paste the source text they want to translate. Additionally, users can select their preferred target language from a list of available languages.
 
+
+
 ## Getting Started
 1. Install the package using npm or yarn
 ```shell
@@ -136,4 +138,5 @@ Signup [here](https://bhashini.gov.in/ulca/user/register) to get authentication 
    - Step 6: press generate in api key to get credentials
    - Step 7: now copy `userid`, `UlcaApiKey`, and 	`authorizationToken` for `Meity` and pass as argument in `bhashini.auth("userid", "UlcaApiKey", "authorizationToken")` function 
 
-
+## For Complete Documentation
+[Complete Documentation ](https://docs-seven-chi.vercel.app/docs/intro)
