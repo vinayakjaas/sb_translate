@@ -13,9 +13,9 @@
 #targetLanguage {
     appearance: none;
     padding: 10px;
-    border: 1px solid #ccc;
+    border: 1px solid black;
     border-radius: 4px;
-    background-color: #baa6a6;
+    background-color: white;
     font-size: 16px;
     margin-left: 10px;
 }
